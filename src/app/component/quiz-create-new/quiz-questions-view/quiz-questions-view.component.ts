@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./quiz-questions-view.component.css'],
 })
 export class QuizQuestionsViewComponent implements OnInit {
+  /* data to be displayed */
   @Input() questionList: Question[] = [];
   @Input() optionsList: Array<Array<string>> = [];
   selectedOption: string[] = [];
@@ -18,6 +19,7 @@ export class QuizQuestionsViewComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /* increase count so that submit button can be enabled and save the selected option on change */
   onOptionSelect(index: number, option: string) {
     if (
       this.selectedOption[index] == undefined ||
@@ -27,6 +29,8 @@ export class QuizQuestionsViewComponent implements OnInit {
       this.length = this.length + 1;
     this.selectedOption[index] = option;
   }
+
+  /* On clicking submit redirect to the result page */
   onSubmit() {
     this.service.chosenOption = this.selectedOption;
     this.router.navigateByUrl('/results');

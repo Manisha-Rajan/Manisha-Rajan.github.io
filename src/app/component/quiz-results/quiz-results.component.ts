@@ -8,20 +8,23 @@ import { QuizMakerService } from 'src/app/quiz-maker-service/quiz-maker.service'
   styleUrls: ['./quiz-results.component.css'],
 })
 export class QuizResultsComponent implements OnInit {
+  /*Data to be displayed*/
   questionList: Question[] = [];
   optionList: Array<Array<String>> = [];
   choosenOption: String[] = [];
   count: number = 0;
   backgroundColour: string = '';
+
   constructor(private service: QuizMakerService) {}
 
   ngOnInit(): void {
     this.questionList = this.service.questionList;
     this.optionList = this.service.OptionList;
     this.choosenOption = this.service.chosenOption;
-    this.backgroundColour = this.Score();
+    this.backgroundColour = this.score();
   }
 
+  /*Method to check if the option displayed is the one selected by User*/
   choosenAnswer(option: String, i: number) {
     let choosenOption = this.choosenOption[i];
     if (option === choosenOption) {
@@ -30,6 +33,8 @@ export class QuizResultsComponent implements OnInit {
       return false;
     }
   }
+
+  /* Method to see if the option getting displayed is the correct answer*/
   correctAnswers(option: String, i: number) {
     let correctAnswer = this.questionList[i].correct_answer;
     if (correctAnswer == option) {
@@ -38,7 +43,9 @@ export class QuizResultsComponent implements OnInit {
       return false;
     }
   }
-  Score() {
+
+  /*Method to count the score*/
+  score() {
     this.count = 0;
     for (let i = 0; i < 5; i++) {
       let correctAnswer = this.questionList[i].correct_answer;

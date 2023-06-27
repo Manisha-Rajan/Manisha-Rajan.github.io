@@ -10,9 +10,11 @@ import { Category } from '../model/category.model';
   providedIn: 'root',
 })
 export class QuizMakerService {
+  /* URL for Get Calls */
   private categoryURL: string = 'https://opentdb.com/api_category.php';
   private questionURL: string = 'https://opentdb.com/api.php';
 
+  /* Data that is used across components*/
   public questionList: Question[] = [];
   public OptionList: Array<Array<string>> = [];
   public chosenOption: string[] = [];

@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-new-quiz.component.css'],
 })
 export class CreateNewQuizComponent implements OnInit {
+  /* Data to display and create questions */
   triviaCategories: Category[] = [];
   difficultyLevels: string[] = ['Easy', 'Medium', 'Hard'];
   selectedCategory: Category = {
@@ -28,6 +29,8 @@ export class CreateNewQuizComponent implements OnInit {
     });
   }
 
+  /*Method called when create is clicked*/
+  /*Gets the question list based on the category and difficulty */
   createQuiz(): void {
     this.service
       .getQuestions(
@@ -44,6 +47,7 @@ export class CreateNewQuizComponent implements OnInit {
       });
   }
 
+  /* create an options array to display from the correct_answers and incorrect_answers */
   getOption(): void {
     this.options = [];
     for (let i = 0; i < this.questions.length; i++) {
@@ -54,6 +58,7 @@ export class CreateNewQuizComponent implements OnInit {
     }
   }
 
+  /* Shuffle the options array randomly */
   ShuffleOptions(array: string[]): string[] {
     let len = array.length,
       ind1,
