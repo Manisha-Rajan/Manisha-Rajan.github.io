@@ -1,0 +1,27 @@
+<div class="container m-2">
+  <p class="text-center">RESULTS</p>
+  <div class="container">
+    <div *ngFor="let question of questionList; let i = index">
+      <p [innerHTML]="question.question" class="m-2"></p>
+      <div class="d-flex">
+        <div
+          *ngFor="let option of optionList[i]"
+          [innerHTML]="option"
+          class="p-2 m-2 option"
+          [class.wrong]="choosenAnswer(option, i) && !correctAnswers(option, i)"
+          [class.correct]="correctAnswers(option, i)"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p
+      class="text-center"
+      [style.background]="backgroundColour"
+      [style.color]="'white'"
+    >
+      You scored {{ count }} out of 5.
+    </p>
+  </div>
+  <div class="btn btn-secondary" [routerLink]="['/']">Create a New Quiz</div>
+</div>

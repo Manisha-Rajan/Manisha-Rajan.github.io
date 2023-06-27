@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="question" *ngFor="let question of questionList; let i = index">
+    <p [innerHTML]="question.question"></p>
+    <div
+      class="btn-group"
+      role="group"
+      *ngFor="let option of optionsList[i]; let k = index"
+    >
+      <input
+        type="radio"
+        class="btn-check"
+        [attr.name]="'btnradio' + i"
+        [attr.id]="'btnradio' + k + i"
+        autocomplete="off"
+        (change)="onOptionSelect(i, option)"
+        [value]="option"
+      />
+      <label
+        class="btn btn-outline-success m-2"
+        [attr.for]="'btnradio' + k + i"
+        [innerHTML]="option"
+      ></label>
+    </div>
+  </div>
+  <button class="btn btn-secondary" *ngIf="length == 5" (click)="onSubmit()">
+    Submit
+  </button>
+</div>

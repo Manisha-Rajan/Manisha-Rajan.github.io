@@ -1,0 +1,50 @@
+<div class="container m-5">
+  <div class="d-flex">
+    <select
+      class="form-select m-2"
+      aria-label="Default select example"
+      id="categorySelect"
+      [(ngModel)]="selectedCategory"
+    >
+      <option selected disabled [value]="{ id: -1, name: 'default' }">
+        Select a category
+      </option>
+      <option
+        *ngFor="let category of triviaCategories; let i = index"
+        [ngValue]="category"
+      >
+        {{ category.name }}
+      </option>
+    </select>
+    <select
+      class="form-select m-2"
+      aria-label="Default select example"
+      [(ngModel)]="selectedDifficulty"
+      id="difficultSelect"
+    >
+      <option selected disabled value="">Select a level</option>
+      <option *ngFor="let difficulty of difficultyLevels; let i = index">
+        {{ difficulty }}
+      </option>
+    </select>
+    <button
+      type="button"
+      class="btn btn-primary m-2"
+      (click)="createQuiz()"
+      [disabled]="
+        selectedCategory.id == -1 ||
+        selectedCategory.id == 0 ||
+        selectedDifficulty == ''
+      "
+      id="createBtn"
+    >
+      Create
+    </button>
+  </div>
+  <quiz-questions-view
+    *ngIf="showQuestion"
+    class="m-2"
+    [optionsList]="options"
+    [questionList]="questions"
+  ></quiz-questions-view>
+</div>

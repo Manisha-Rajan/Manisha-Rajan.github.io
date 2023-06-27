@@ -1,0 +1,14 @@
+.option {
+  border-style: solid;
+  border-color: green;
+  border-radius: 5px;
+  border-width: 1px;
+}
+.wrong {
+  color: white;
+  background-color: red;
+}
+.correct {
+  color: white;
+  background-color: green;
+}
