@@ -20,7 +20,7 @@ export class QuizQuestionsViewComponent implements OnInit {
   ngOnInit(): void {}
 
   /* increase count so that submit button can be enabled and save the selected option on change */
-  onOptionSelect(index: number, option: string) {
+  onOptionSelect(index: number, option: string): void {
     if (
       this.selectedOption[index] == undefined ||
       this.selectedOption[index] == null ||
@@ -31,7 +31,7 @@ export class QuizQuestionsViewComponent implements OnInit {
   }
 
   /* On clicking submit redirect to the result page */
-  onSubmit() {
+  onSubmit(): void {
     this.service.chosenOption = this.selectedOption;
     this.router.navigateByUrl('/results');
   }

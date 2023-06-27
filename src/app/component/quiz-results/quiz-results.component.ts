@@ -25,7 +25,7 @@ export class QuizResultsComponent implements OnInit {
   }
 
   /*Method to check if the option displayed is the one selected by User*/
-  choosenAnswer(option: String, i: number) {
+  choosenAnswer(option: String, i: number):boolean {
     let choosenOption = this.choosenOption[i];
     if (option === choosenOption) {
       return true;
@@ -35,7 +35,7 @@ export class QuizResultsComponent implements OnInit {
   }
 
   /* Method to see if the option getting displayed is the correct answer*/
-  correctAnswers(option: String, i: number) {
+  correctAnswers(option: String, i: number):boolean {
     let correctAnswer = this.questionList[i].correct_answer;
     if (correctAnswer == option) {
       return true;
@@ -45,7 +45,7 @@ export class QuizResultsComponent implements OnInit {
   }
 
   /*Method to count the score*/
-  score() {
+  score():string {
     this.count = 0;
     for (let i = 0; i < 5; i++) {
       let correctAnswer = this.questionList[i].correct_answer;
